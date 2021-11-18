@@ -1,6 +1,5 @@
 package com.beanfun.concatadapterexample.ui.main.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,11 +11,11 @@ import com.beanfun.concatadapterexample.databinding.RecyclerviewHorizontalWrappe
 
 public class HorizontalWrapperAdapter<dataType, childViewHolder extends BaseSetterViewHolder<dataType>> extends RecyclerView.Adapter<HorizontalWrapperViewHolder<dataType, childViewHolder>> {
     private static final Integer WRAPPER_VIEW_TYPE = 9495;
-    private final RecyclerView.Adapter<childViewHolder> adapter;
+    private final ImpressionHandleAdapter<childViewHolder> adapter;
     private int lastScrollX = 0;
 
 
-    public HorizontalWrapperAdapter(RecyclerView.Adapter<childViewHolder> adapter) {
+    public HorizontalWrapperAdapter(ImpressionHandleAdapter<childViewHolder> adapter) {
         this.adapter = adapter;
     }
 
@@ -44,6 +43,6 @@ public class HorizontalWrapperAdapter<dataType, childViewHolder extends BaseSett
     @Override
     public void onViewAttachedToWindow(@NonNull HorizontalWrapperViewHolder<dataType, childViewHolder> holder) {
         super.onViewAttachedToWindow(holder);
-        Log.e("yuli", "WrapperAdapterAttach: ");
+        this.adapter.stopRecord();
     }
 }

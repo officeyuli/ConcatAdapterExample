@@ -6,31 +6,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.beanfun.concatadapterexample.R;
-import com.beanfun.concatadapterexample.ui.main.viewholder.ButtonViewHolder;
 import com.beanfun.concatadapterexample.ui.main.viewholder.TextViewHolder;
 
 import java.util.List;
 
-public class TextAdapter extends RecyclerView.Adapter<TextViewHolder<String>> {
-    private List<String> data ;
+public class TextAdapter extends ImpressionHandleAdapter<TextViewHolder> {
+    private List<String> data;
 
     @NonNull
     @Override
-    public TextViewHolder<String>onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_type_string, parent, false);
-        return new TextViewHolder<>(view);
+    public TextViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_type_string, parent, false);
+        return new TextViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TextViewHolder<String> holder, int position) {
+    public void onBindViewHolder(@NonNull TextViewHolder holder, int position) {
         String obj = data.get(position);
-        if(obj!=null){
+        if (obj != null) {
             holder.onBind(obj);
         }
     }
+
     @Override
     public int getItemViewType(int position) {
         return R.layout.item_type_string;
@@ -38,16 +37,18 @@ public class TextAdapter extends RecyclerView.Adapter<TextViewHolder<String>> {
 
     @Override
     public int getItemCount() {
-        return data == null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
-    public void setData(List<String> data){
+    public void setData(List<String> data) {
         this.data = data;
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull TextViewHolder<String> holder) {
+    public void onViewAttachedToWindow(@NonNull TextViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        Log.e("yuli", "onViewAttachedToWindow: "+holder.getData());
+        if (canRecordImpression) {
+            Log.e("yuli", "record text: " + holder.getData());
+        }
     }
 }

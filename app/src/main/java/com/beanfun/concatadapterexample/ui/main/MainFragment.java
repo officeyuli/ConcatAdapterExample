@@ -24,12 +24,10 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
     private View view;
-    private RecyclerView recyclerView;
     private MainViewModel mViewModel;
     private ButtonAdapter buttonAdapter;
     private TextAdapter textAdapter;
     private TextAdapter textAdapter2;
-    private HorizontalWrapperAdapter<String, TextViewHolder<String>> wrapperAdapter;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -40,12 +38,12 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.main_fragment, container, false);
-        recyclerView = view.findViewById(R.id.rv);
+        RecyclerView recyclerView = view.findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         buttonAdapter = new ButtonAdapter();
         textAdapter = new TextAdapter();
         textAdapter2 = new TextAdapter();
-        wrapperAdapter = new HorizontalWrapperAdapter<>(textAdapter2);
+        HorizontalWrapperAdapter<String, TextViewHolder> wrapperAdapter = new HorizontalWrapperAdapter<>(textAdapter2);
         recyclerView.setAdapter(new ConcatAdapter(wrapperAdapter,buttonAdapter));
         return view;
     }
