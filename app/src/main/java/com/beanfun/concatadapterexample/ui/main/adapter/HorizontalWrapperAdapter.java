@@ -7,15 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.beanfun.concatadapterexample.databinding.RecyclerviewHorizontalWrapperBinding;
+import com.beanfun.concatadapterexample.ui.main.viewholder.HorizontalWrapperViewHolder;
 
 
 public class HorizontalWrapperAdapter<dataType, childViewHolder extends BaseSetterViewHolder<dataType>> extends RecyclerView.Adapter<HorizontalWrapperViewHolder<dataType, childViewHolder>> {
     private static final Integer WRAPPER_VIEW_TYPE = 9495;
-    private final ImpressionHandleAdapter<childViewHolder> adapter;
-    private int lastScrollX = 0;
+    public static final Integer DEFAULT_SCROLL_POSITION = 0;
+    private final ImpressionHandleAdapter<dataType, childViewHolder> adapter;
+    private int lastScrollX = DEFAULT_SCROLL_POSITION;
 
 
-    public HorizontalWrapperAdapter(ImpressionHandleAdapter<childViewHolder> adapter) {
+    public HorizontalWrapperAdapter(ImpressionHandleAdapter<dataType, childViewHolder> adapter) {
         this.adapter = adapter;
     }
 
@@ -38,11 +40,5 @@ public class HorizontalWrapperAdapter<dataType, childViewHolder extends BaseSett
     @Override
     public int getItemCount() {
         return 1;
-    }
-
-    @Override
-    public void onViewAttachedToWindow(@NonNull HorizontalWrapperViewHolder<dataType, childViewHolder> holder) {
-        super.onViewAttachedToWindow(holder);
-        this.adapter.stopRecord();
     }
 }

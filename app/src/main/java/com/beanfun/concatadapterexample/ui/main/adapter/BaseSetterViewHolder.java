@@ -12,6 +12,10 @@ public abstract class BaseSetterViewHolder<DataType> extends RecyclerView.ViewHo
         super(itemView);
     }
 
+    public DataType getData() {
+        return data;
+    }
+
     public void setData(DataType data) {
         this.data = data;
     }

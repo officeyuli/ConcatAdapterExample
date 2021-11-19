@@ -18,11 +18,6 @@ public class ButtonViewHolder extends BaseSetterViewHolder<Integer> {
 
     public void onBind(Integer index) {
         this.data = index;
-        ((Button) this.view.findViewById(R.id.item_button)).setText(index);
+        ((Button) this.view.findViewById(R.id.item_button)).setText("" + index);
     }
-
-    public Integer getData() {
-        return data;
-    }
-
 }

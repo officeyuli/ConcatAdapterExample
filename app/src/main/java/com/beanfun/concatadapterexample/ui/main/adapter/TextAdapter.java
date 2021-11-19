@@ -1,6 +1,5 @@
 package com.beanfun.concatadapterexample.ui.main.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import com.beanfun.concatadapterexample.ui.main.viewholder.TextViewHolder;
 
 import java.util.List;
 
-public class TextAdapter extends ImpressionHandleAdapter<TextViewHolder> {
+public class TextAdapter extends ImpressionHandleAdapter<String, TextViewHolder> {
     private List<String> data;
 
     @NonNull
@@ -42,13 +41,5 @@ public class TextAdapter extends ImpressionHandleAdapter<TextViewHolder> {
 
     public void setData(List<String> data) {
         this.data = data;
-    }
-
-    @Override
-    public void onViewAttachedToWindow(@NonNull TextViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        if (canRecordImpression) {
-            Log.e("yuli", "record text: " + holder.getData());
-        }
     }
 }

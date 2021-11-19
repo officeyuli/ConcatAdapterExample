@@ -14,13 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.beanfun.concatadapterexample.R;
-import com.beanfun.concatadapterexample.ui.main.adapter.BaseSetterViewHolder;
 import com.beanfun.concatadapterexample.ui.main.adapter.ButtonAdapter;
 import com.beanfun.concatadapterexample.ui.main.adapter.HorizontalWrapperAdapter;
 import com.beanfun.concatadapterexample.ui.main.adapter.TextAdapter;
 import com.beanfun.concatadapterexample.ui.main.viewholder.TextViewHolder;
-
-import java.util.List;
 
 public class MainFragment extends Fragment {
     private View view;
