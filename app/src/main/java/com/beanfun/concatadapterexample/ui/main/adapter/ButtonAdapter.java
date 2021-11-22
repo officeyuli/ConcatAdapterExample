@@ -10,7 +10,7 @@ import com.beanfun.concatadapterexample.ui.main.viewholder.ButtonViewHolder;
 
 import java.util.List;
 
-public class ButtonAdapter extends ImpressionHandleAdapter<Integer, ButtonViewHolder> {
+public class ButtonAdapter extends WrapperImpressionHandleAdapter<Integer, ButtonViewHolder> {
     private List<Integer> data;
 
     @NonNull

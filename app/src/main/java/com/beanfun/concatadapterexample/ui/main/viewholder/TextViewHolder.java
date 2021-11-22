@@ -6,9 +6,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.beanfun.concatadapterexample.R;
-import com.beanfun.concatadapterexample.ui.main.adapter.BaseSetterViewHolder;
+import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.BaseDataKeeperViewHolder;
 
-public class TextViewHolder extends BaseSetterViewHolder<String> {
+public class TextViewHolder extends BaseDataKeeperViewHolder<String> {
     private final View view;
 
     public TextViewHolder(@NonNull View itemView) {

@@ -6,9 +6,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 
 import com.beanfun.concatadapterexample.R;
-import com.beanfun.concatadapterexample.ui.main.adapter.BaseSetterViewHolder;
+import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.BaseDataKeeperViewHolder;
 
-public class ButtonViewHolder extends BaseSetterViewHolder<Integer> {
+public class ButtonViewHolder extends BaseDataKeeperViewHolder<Integer> {
     private final View view;
 
     public ButtonViewHolder(@NonNull View itemView) {

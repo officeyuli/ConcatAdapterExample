@@ -11,7 +11,7 @@ import com.beanfun.concatadapterexample.ui.main.viewholder.TextViewHolder;
 
 import java.util.List;
 
-public class TextAdapter extends ImpressionHandleAdapter<String, TextViewHolder> {
+public class TextAdapter extends WrapperImpressionHandleAdapter<String, TextViewHolder> {
     private List<String> data;
 
     @NonNull

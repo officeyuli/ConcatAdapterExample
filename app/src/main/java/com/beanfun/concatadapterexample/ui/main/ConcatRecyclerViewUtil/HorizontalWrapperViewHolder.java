@@ -1,6 +1,4 @@
-package com.beanfun.concatadapterexample.ui.main.viewholder;
-
-import static com.beanfun.concatadapterexample.ui.main.adapter.HorizontalWrapperAdapter.DEFAULT_SCROLL_POSITION;
+package com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.OneShotPreDrawListener;
@@ -8,11 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.beanfun.concatadapterexample.databinding.RecyclerviewHorizontalWrapperBinding;
-import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.BaseDataKeeperViewHolder;
-import com.beanfun.concatadapterexample.ui.main.adapter.WrapperImpressionHandleAdapter;
-import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.OnScrollCallback;
 
-public class HorizontalWrapperViewHolder<dataType, childViewHolder extends BaseDataKeeperViewHolder<dataType>> extends RecyclerView.ViewHolder {
+public class HorizontalWrapperViewHolder<childVH extends RecyclerView.ViewHolder> extends RecyclerView.ViewHolder {
     private final RecyclerviewHorizontalWrapperBinding binding;
 
     public HorizontalWrapperViewHolder(@NonNull RecyclerviewHorizontalWrapperBinding binding) {
@@ -20,16 +15,12 @@ public class HorizontalWrapperViewHolder<dataType, childViewHolder extends BaseD
         this.binding = binding;
     }
 
-    public void bind(WrapperImpressionHandleAdapter<dataType, childViewHolder> adapter, int lastScrollPosition, OnScrollCallback onScrollCallback) {
+    public void bind(RecyclerView.Adapter<childVH> adapter, int lastScrollPosition, OnScrollCallback onScrollCallback) {
         binding.recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(binding.getRoot().getContext(), RecyclerView.HORIZONTAL, false);
         binding.recyclerView.setLayoutManager(layoutManager);
-        if (lastScrollPosition != DEFAULT_SCROLL_POSITION) {
-            adapter.stopRecord();
-        }
         OneShotPreDrawListener.add(binding.recyclerView, () -> {
             binding.recyclerView.scrollBy(lastScrollPosition, 0);
-            adapter.startRecord();
         });
 
         binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

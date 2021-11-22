@@ -1,14 +1,14 @@
-package com.beanfun.concatadapterexample.ui.main.adapter;
+package com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil;
 
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class BaseSetterViewHolder<DataType> extends RecyclerView.ViewHolder {
+public abstract class BaseDataKeeperViewHolder<DataType> extends RecyclerView.ViewHolder {
     protected DataType data;
 
-    public BaseSetterViewHolder(@NonNull View itemView) {
+    public BaseDataKeeperViewHolder(@NonNull View itemView) {
         super(itemView);
     }
 

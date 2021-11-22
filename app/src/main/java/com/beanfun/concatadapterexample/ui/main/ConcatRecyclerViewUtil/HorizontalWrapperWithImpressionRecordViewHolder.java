@@ -1,6 +1,6 @@
-package com.beanfun.concatadapterexample.ui.main.viewholder;
+package com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil;
 
-import static com.beanfun.concatadapterexample.ui.main.adapter.HorizontalWrapperAdapter.DEFAULT_SCROLL_POSITION;
+import static com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.HorizontalWrapperAdapter.DEFAULT_SCROLL_POSITION;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.OneShotPreDrawListener;
@@ -8,19 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.beanfun.concatadapterexample.databinding.RecyclerviewHorizontalWrapperBinding;
-import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.BaseDataKeeperViewHolder;
 import com.beanfun.concatadapterexample.ui.main.adapter.WrapperImpressionHandleAdapter;
-import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.OnScrollCallback;
 
-public class HorizontalWrapperViewHolder<dataType, childViewHolder extends BaseDataKeeperViewHolder<dataType>> extends RecyclerView.ViewHolder {
+public class HorizontalWrapperWithImpressionRecordViewHolder<dataType, childVH extends BaseDataKeeperViewHolder<dataType>> extends RecyclerView.ViewHolder {
     private final RecyclerviewHorizontalWrapperBinding binding;
 
-    public HorizontalWrapperViewHolder(@NonNull RecyclerviewHorizontalWrapperBinding binding) {
+    public HorizontalWrapperWithImpressionRecordViewHolder(@NonNull RecyclerviewHorizontalWrapperBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
 
-    public void bind(WrapperImpressionHandleAdapter<dataType, childViewHolder> adapter, int lastScrollPosition, OnScrollCallback onScrollCallback) {
+    public void bind(WrapperImpressionHandleAdapter<dataType, childVH> adapter, int lastScrollPosition, OnScrollCallback onScrollCallback) {
         binding.recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(binding.getRoot().getContext(), RecyclerView.HORIZONTAL, false);
         binding.recyclerView.setLayoutManager(layoutManager);

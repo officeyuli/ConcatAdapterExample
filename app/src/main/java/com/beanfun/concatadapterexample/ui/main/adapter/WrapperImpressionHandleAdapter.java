@@ -3,9 +3,12 @@ package com.beanfun.concatadapterexample.ui.main.adapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class ImpressionHandleAdapter<dataType, childViewHolder extends BaseSetterViewHolder<dataType>> extends RecyclerView.Adapter<childViewHolder> {
+import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.BaseDataKeeperViewHolder;
+import com.beanfun.concatadapterexample.ui.main.ConcatRecyclerViewUtil.WrapperImpressionCallBack;
+
+public abstract class WrapperImpressionHandleAdapter<dataType, childViewHolder extends BaseDataKeeperViewHolder<dataType>> extends RecyclerView.Adapter<childViewHolder> {
     protected Boolean canRecordImpression = true;
-    protected OnImpressionCallBack<dataType, childViewHolder> onImpressionCallBack;
+    protected WrapperImpressionCallBack<dataType, childViewHolder> onImpressionCallBack;
 
     public void startRecord() {
         this.canRecordImpression = true;
@@ -19,11 +22,11 @@ public abstract class ImpressionHandleAdapter<dataType, childViewHolder extends 
     public void onViewAttachedToWindow(@NonNull childViewHolder holder) {
         super.onViewAttachedToWindow(holder);
         if (onImpressionCallBack != null && canRecordImpression) {
-            onImpressionCallBack.onImpressionFire(holder);
+            onImpressionCallBack.recordImpression(holder);
         }
     }
 
-    public void setOnImpressionCallBack(OnImpressionCallBack<dataType, childViewHolder> onImpressionCallBack) {
+    public void setOnImpressionCallBack(WrapperImpressionCallBack<dataType, childViewHolder> onImpressionCallBack) {
         this.onImpressionCallBack = onImpressionCallBack;
     }
 }
